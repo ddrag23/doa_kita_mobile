@@ -26,7 +26,7 @@ class HomeScreen extends ConsumerWidget {
               onTap: () {
                 Logger().i("oke");
                 Navigator.pushNamed(context, '/detail',
-                    arguments: DetailScreenArgument(item.id));
+                    arguments: DetailScreenArgument(item));
               },
               child: ListTile(
                 title: Text(item.title),

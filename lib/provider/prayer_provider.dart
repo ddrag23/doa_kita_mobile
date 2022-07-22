@@ -12,17 +12,25 @@ final prayerProvider =
 });
 
 class PrayerProvider extends StateNotifier<List<PrayerModel>> {
-  PrayerProvider(this._serviceData, [List<PrayerModel>? state]) : super(state ?? []);
+  PrayerProvider(this._serviceData, [List<PrayerModel>? state])
+      : super(state ?? []);
   final PrayerService? _serviceData;
 
-  Future<void> readAllPrayer() async{
+  Future<void> readAllPrayer() async {
     try {
       List<PrayerModel> response = await _serviceData!.getAllPrayer();
       Logger(printer: PrettyPrinter()).d(response);
-        state = response;
+      state = response;
     } catch (e) {
       Logger(printer: PrettyPrinter()).d(e);
+    }
+  }
 
+  Future<void> showPrayer(int id) async {
+    try {
+      PrayerModel response = await _serviceData!.showPrayer(id);
+    } catch (e) {
+      Logger().e(e);
     }
   }
 }

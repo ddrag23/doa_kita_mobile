@@ -16,4 +16,9 @@ class PrayerService {
 
     return items;
   }
+
+  Future<PrayerModel> showPrayer(int id) async {
+    Response response = await _client.get('/prayer/$id');
+    return PrayerModel.fromMap(response.data['data']);
+  }
 }
